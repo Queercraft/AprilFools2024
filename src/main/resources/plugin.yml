@@ -1,0 +1,4 @@
+name: AprilFools2024
+version: '${version}'
+main: me.diademiemi.aprilfools2024.AprilFools2024
+api-version: '1.13'
