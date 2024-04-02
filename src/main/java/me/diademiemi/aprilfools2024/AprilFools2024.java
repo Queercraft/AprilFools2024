@@ -1,5 +1,8 @@
 package me.diademiemi.aprilfools2024;
 
+import me.diademiemi.aprilfools2024.command.CommandHandler;
+import me.diademiemi.aprilfools2024.listener.EventListener;
+import me.diademiemi.aprilfools2024.listener.RandomScheduler;
 import me.diademiemi.aprilfools2024.listener.TrackingListener;
 import me.diademiemi.aprilfools2024.player.TrackedPlayer;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
@@ -30,6 +33,13 @@ public final class AprilFools2024 extends JavaPlugin {
 
         // Register the tracking listener (join and quit)
         getServer().getPluginManager().registerEvents(new TrackingListener(), this);
+        getServer().getPluginManager().registerEvents(new EventListener(), this);
+
+        // Register CommandHandler
+        getCommand("aprilfools2024").setExecutor(new CommandHandler());
+
+        // Schedule the random global dialogues
+        RandomScheduler.scheduleRandom();
 
     }
 

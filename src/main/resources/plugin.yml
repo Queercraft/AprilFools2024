@@ -2,3 +2,11 @@ name: AprilFools2024
 version: '${version}'
 main: me.diademiemi.aprilfools2024.AprilFools2024
 api-version: '1.13'
+authors: [diademiemi]
+depend: ["InvUiLib"]
+commands:
+  aprilfools2024:
+      description: April Fools 2024
+      usage: /aprilfools2024
+      aliases: []
+      permission: aprilfools2024.admin

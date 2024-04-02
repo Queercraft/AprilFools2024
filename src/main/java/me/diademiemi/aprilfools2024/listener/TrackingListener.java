@@ -4,13 +4,18 @@ import com.google.gson.JsonElement;
 import me.diademiemi.aprilfools2024.player.TrackedPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class TrackingListener implements Listener {
 
-    @EventHandler
+    /**
+     * Track a player when they join the server and have the permission to be tracked
+     * @param event
+     */
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         // Logic for tracking players
 
@@ -37,7 +42,7 @@ public class TrackingListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerQUit(PlayerQuitEvent e) {
+    public void onPlayerQuit(PlayerQuitEvent e) {
         // Attempt to get the TrackedPlayer object for the player
         TrackedPlayer trackedPlayer = TrackedPlayer.getTrackedPlayer(e.getPlayer().getUniqueId());
         // If not null

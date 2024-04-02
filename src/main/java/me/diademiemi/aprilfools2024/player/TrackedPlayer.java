@@ -1,8 +1,10 @@
 package me.diademiemi.aprilfools2024.player;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import me.diademiemi.aprilfools2024.AprilFools2024;
+import me.diademiemi.aprilfools2024.listener.EventListener;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 
@@ -49,6 +51,20 @@ public class TrackedPlayer implements ConfigurationSerializable {
         return trackedPlayers.get(uuid);
     }
 
+    public static TrackedPlayer getTrackedPlayer(Player player) {
+        return getTrackedPlayer(player.getUniqueId());
+    }
+
+    public static TrackedPlayer getTrackedPlayer(String playerName) {
+        Player player = AprilFools2024.getPlugin().getServer().getPlayer(playerName);
+
+        if (player == null) {
+            return null;
+        }
+
+        return getTrackedPlayer(player);
+    }
+
     // Store the Player object, is null when the player is offline
     public Player player;
 
@@ -77,14 +93,51 @@ public class TrackedPlayer implements ConfigurationSerializable {
         this.player = null;
     }
 
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public boolean getFlagExists(String flag) {
+        return jsonData.get(flag) != null;
+    }
+
+    public void unsetFlag(String flag) {
+        jsonData.remove(flag);
+    }
+
+    public void clearData() {
+        jsonData = new JsonObject();
+        TrackedPlayerUtil.setFlags(this, this.getPlayer());
+    }
+
+    public JsonElement getFlag(String flag) {
+        return jsonData.get(flag);
+    }
+
     // Get a flag from the json data
-    public boolean getFlag(String flag) {
+    public boolean getBoolFlag(String flag) {
         // This can be null, default to false
         return jsonData.get(flag) != null && jsonData.get(flag).getAsBoolean();
     }
 
     // Set a flag in the json data
-    public void setFlag(String flag, boolean value) {
+    public void setBoolFlag(String flag, boolean value) {
+        jsonData.addProperty(flag, value);
+    }
+
+    public int getIntFlag(String flag) {
+        return jsonData.get(flag).getAsInt();
+    }
+
+    public void setIntFlag(String flag, int value) {
+        jsonData.addProperty(flag, value);
+    }
+
+    public String getStringFlag(String flag) {
+        return jsonData.get(flag).getAsString();
+    }
+
+    public void setStringFlag(String flag, String value) {
         jsonData.addProperty(flag, value);
     }
 

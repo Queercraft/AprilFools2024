@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'me.diademiemi'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 repositories {
     mavenCentral()
@@ -16,18 +16,22 @@ repositories {
         url = "https://oss.sonatype.org/content/groups/public/"
     }
     maven {
+        url = uri("https://repo.opencollab.dev/main/")
+    }
+    maven {
         name = "invuilib"
         url = uri("https://maven.pkg.github.com/diademiemi/invuilib")
         credentials {
-            username = System.getenv("GITHUB_ACTOR")
-            password = System.getenv("GITHUB_TOKEN")
+            username = "$System.env.GITHUB_ACTOR"
+            password = "$System.env.GITHUB_TOKEN"
         }
     }
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT"
-    compileOnly "me.diademiemi:invuilib:1.0-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
+    compileOnly "me.diademiemi:invuilib:0.1"
+    compileOnly "org.geysermc.geyser:api:2.2.0-SNAPSHOT"
 }
 
 def targetJavaVersion = 8
