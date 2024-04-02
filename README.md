@@ -52,4 +52,4 @@ boring files incoming!!!
 
 [TrackedPlayer](src/main/java/me/diademiemi/aprilfools2024/player/TrackedPlayer.java) contains the data structure for the players. This is what gets saved to disk and makes it persistent. Getting this right at first made it easy to add new dialogs.  
 
-[EventListener](src/main/java/me/diademiemi/aprilfools2024/event/EventListener.java) contains the tracking code that actually sees what players do like tracking stats, block places, movement. Based on this it shows the popups dependent on booleans and sets those booleans.
+[EventListener](src/main/java/me/diademiemi/aprilfools2024/listener/EventListener.java) contains the tracking code that actually sees what players do like tracking stats, block places, movement. Based on this it shows the popups dependent on booleans and sets those booleans.
