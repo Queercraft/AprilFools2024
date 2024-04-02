@@ -43,6 +43,8 @@ jobs:
 
       - name: Build native image with Gradle
         run: ./gradlew build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload JAR as an artifact
         uses: actions/upload-artifact@v2
