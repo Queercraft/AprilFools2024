@@ -18,14 +18,6 @@ repositories {
     maven {
         url = uri("https://repo.opencollab.dev/main/")
     }
-    maven {
-        name = "invuilib"
-        url = uri("https://maven.pkg.github.com/diademiemi/invuilib")
-        credentials {
-            username = "$System.env.GITHUB_ACTOR"
-            password = "$System.env.GITHUB_TOKEN"
-        }
-    }
 }
 
 dependencies {
