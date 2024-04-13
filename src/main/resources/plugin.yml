@@ -3,7 +3,7 @@ version: '${version}'
 main: me.diademiemi.aprilfools2024.AprilFools2024
 api-version: '1.13'
 authors: [diademiemi]
-depend: ["InvUiLib"]
+depend: ["InvUILib"]
 commands:
   aprilfools2024:
       description: April Fools 2024
