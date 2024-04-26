@@ -53,3 +53,7 @@ boring files incoming!!!
 [TrackedPlayer](src/main/java/me/diademiemi/aprilfools2024/player/TrackedPlayer.java) contains the data structure for the players. This is what gets saved to disk and makes it persistent. Getting this right at first made it easy to add new dialogs.  
 
 [EventListener](src/main/java/me/diademiemi/aprilfools2024/listener/EventListener.java) contains the tracking code that actually sees what players do like tracking stats, block places, movement. Based on this it shows the popups dependent on booleans and sets those booleans.
+
+
+## Terraform Example Environment
+You can use [my minecraft-testenv](https://github.com/diademiemi/test_envs/tree/main/minecraft-testenv) with this. Just pass along `-e additional_plugins='[{"name":"AprilFools2024","source":"https://github.com/Queercraft/AprilFools2024/releases/download/1.0/AprilFools2024-1.0.jar","type":"url","state":"present"},{"name":"InvUILib","source":"https://github.com/diademiemi/InvUILib/releases/download/0.1/invuilib-0.1.jar","type":"url","state":"present"}]` to the playbook!
